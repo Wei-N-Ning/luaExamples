@@ -56,11 +56,20 @@ function sequenceMove()
 end
 
 
+-- unpack a list to variables
+function demoTableUnpack()
+    a, b = table.unpack{10, 20, 30}
+    assert(a == 10 and b == 20)
+end
+
+
 function run()
     createTable()
     initTable()
     sequenceBasics()
     sequenceMove()
+    
+    demoTableUnpack()
 end
 
 
