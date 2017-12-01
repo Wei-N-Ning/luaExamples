@@ -63,6 +63,16 @@ function demoTableUnpack()
 end
 
 
+-- access the member using the dot-operator
+function attributeStyleTable()
+    local a = {
+        name = "imp"
+    }
+    assert("imp" == a.name)
+    print(a)
+end
+
+
 function run()
     createTable()
     initTable()
@@ -70,6 +80,7 @@ function run()
     sequenceMove()
     
     demoTableUnpack()
+    attributeStyleTable()
 end
 
 
