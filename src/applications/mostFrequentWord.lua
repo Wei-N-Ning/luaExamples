@@ -6,12 +6,15 @@ function resourcesDir()
 end
 
 
-function resourceFile(fileName)
+function testResourceFile(fileName)
+    local filePath = resourcesDir().."/"..fileName
+    local f = io.open(filePath, "r")
+    assert(f)
 end
 
 
 function run()
-    print(resourceFile("texts/mostFrequentWords"))
+    testResourceFile("texts/COPYING.GPL")
 end
 
 
