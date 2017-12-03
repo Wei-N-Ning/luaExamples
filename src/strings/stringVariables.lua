@@ -53,11 +53,18 @@ function bytesAsString()
 end
 
 
+function stringComparison()
+    assert("Doom" < "ZDoom")
+    assert("doom" > "Doom")
+end
+
+
 function run()
     stringLength()
     stringSubstitution()
     stringConcatenation()
     longTextDemo()
+    stringComparison()
 end
 
 
