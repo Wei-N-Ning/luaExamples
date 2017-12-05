@@ -1,0 +1,13 @@
+# v1.0
+# written in Geany
+
+:Node
+0, wolf3d 1992
+1, Doom 1992
+2, Doom 2 1993
+3, Quake 1995
+
+:Connection
+0 1 2
+1 3
+2 3
