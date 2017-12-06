@@ -1,0 +1,17 @@
+-- data file begin
+
+
+Entry{
+    "Doom",
+    "Id software",
+    "1992"
+}
+
+Entry{
+    "Doom 2",
+    "Id software",
+    "1993"
+}
+
+
+-- data file end
