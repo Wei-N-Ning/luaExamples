@@ -1,6 +1,7 @@
 
 
 local foobar = require "foobar"
+local meat = require "packages.meat"
 
 
 function expectSymbolsInModuleNamespace()
@@ -9,8 +10,14 @@ function expectSymbolsInModuleNamespace()
 end
 
 
+function expectSymbolsInSubModuleNamespace()
+    assert(0xDEAD == meat.beaf)
+end
+
+
 function run()
     expectSymbolsInModuleNamespace()
+    expectSymbolsInSubModuleNamespace()
 end
 
 
