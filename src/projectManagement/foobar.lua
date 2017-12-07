@@ -13,6 +13,8 @@ local function initialize()
 end
 
 
+-- also accepted: 
+-- function Symbols.test()
 local function test()
     assert(1 == food["pie"])
     assert(0xDEAD == bart["beef"])
@@ -20,5 +22,8 @@ local function test()
 end
 
 
-initialize()
-test()
+-- must have the return statement to export the symbols
+return {
+    ["initialize"]=initialize,
+    ["test"]=test
+}
