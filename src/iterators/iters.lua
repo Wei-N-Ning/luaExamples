@@ -61,10 +61,48 @@ function demoIterateOverArbitraryElements()
 end
 
 
+function demoIteratorInternals()
+    -- see Lua book P158
+    -- if our iterator function is f, the invariant state is s, and the 
+    -- initial value for the control variable is a 0 , the control 
+    -- variable will loop over the values 
+    -- a 1 = f(s, a 0 ), 
+    -- a 2 = f(s, a 1 ), 
+    -- and so on, until a i is nil
+    
+    local _f, _s, _var, _ = pairs({name="crash", age=13})
+    
+    -- the order of the k-v pairs can be different for each run!
+    -- name crash 
+    _var, _ = _f(_s, _var)
+    --~ print(_var, _)  
+    -- age 13
+    _var, _ = _f(_s, _var)
+    --~ print(_var, _)  
+    -- nil nil
+    _var, _ = _f(_s, _var)
+    --~ print(_var, _)  
+end
+
+
+function demoIteratorRollForward()
+    local t = {name="wreck", height=6.3, weight=230.0}
+    
+    -- the first k-v pair in arbitrary order
+    local k, v = next(t, nil)
+    --~ print(k, v)
+    
+    -- the second k-v pair in arbitrary order
+    k, v = next(t, k)
+    --~ print(k, v)
+end
+
+
 function run()
     demoIterateOverNumbers()
     demoIterateOverArbitraryElements()
-    
+    demoIteratorInternals()
+    demoIteratorRollForward()
 end
 
 
