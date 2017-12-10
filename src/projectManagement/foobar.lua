@@ -22,8 +22,15 @@ local function test()
 end
 
 
+-- a demo that deliberately pollute "global environment table"
+local function harmfulFunction()
+    _ENV.critical = -1
+end
+
+
 -- must have the return statement to export the symbols
 return {
     ["initialize"]=initialize,
-    ["test"]=test
+    ["test"]=test,
+    ["harmfulFunction"]=harmfulFunction
 }
