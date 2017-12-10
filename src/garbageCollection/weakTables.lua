@@ -66,15 +66,27 @@ local function prt(node)
 end
 
 
+local function createCapturePackage()
+    local capturePackage = createNode("e1m1")
+    local clip = createNode("clip", capturePackage)
+    local imp01 = createNode("imp01", capturePackage)
+    local gun01 = createNode("gun01", capturePackage)
+    local imp01Media = createNode("imp01Media", clip)
+    local gun01Media = createNode("gun01Media", clip)
+    return capturePackage
+end
+
+
 local function run()
-    capturePackage = createNode("e1m1")
-    clip = createNode("clip", capturePackage)
-    imp01 = createNode("imp01", capturePackage)
-    gun01 = createNode("gun01", capturePackage)
-    imp01Media = createNode("imp01Media", clip)
-    gun01Media = createNode("gun01Media", clip)
-    
+    local capturePackage = createCapturePackage()
     iterNodeGraph(capturePackage, prt)
+    local nodes = {}
+    local function addNodeToList(n)
+        nodes[#nodes + 1] = n
+    end
+    assert(0 == #nodes)
+    iterNodeGraph(capturePackage, addNodeToList)
+    assert(6 == #nodes)
 end
 
 
