@@ -5,6 +5,7 @@
 -- return: Node
 -- .name
 -- .parent
+-- .childNodes (weak references)
 local function createNode(name, parentNode)
     local node = {
         ["name"]=name,
