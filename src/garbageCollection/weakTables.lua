@@ -11,6 +11,7 @@ local function createNode(name, parentNode)
         ["parentNode"]=parentNode,
         ["childNodes"]={},
     }
+    setmetatable(node.childNodes, {__mode="v"})
     if parentNode ~= nil then
         parentNode.childNodes[#parentNode.childNodes + 1] = node 
     end
@@ -61,11 +62,6 @@ local function iterNodeGraph(node, cb)
 end
 
 
-local function prt(node)
-    print(string.format("node(%s)", node.name))
-end
-
-
 local function createCapturePackage()
     local capturePackage = createNode("e1m1")
     local clip = createNode("clip", capturePackage)
@@ -77,16 +73,89 @@ local function createCapturePackage()
 end
 
 
-local function run()
+local function demoSceneGraph()
+    local function prt(node)
+        --~ print(string.format("node(%s)", node.name))
+    end
+    
     local capturePackage = createCapturePackage()
+    
     iterNodeGraph(capturePackage, prt)
+    
     local nodes = {}
+    
     local function addNodeToList(n)
         nodes[#nodes + 1] = n
     end
     assert(0 == #nodes)
     iterNodeGraph(capturePackage, addNodeToList)
     assert(6 == #nodes)
+end
+
+
+-- this demo uses a table with weak-keys
+-- as the Lua Book explains, this scenario can implement classic
+-- memoize (function return value cache)
+local function demoTableWithWeakKeys()
+    local metatable = {__mode="k"}
+    local l = {}
+    setmetatable(l, metatable)
+    local function size()
+        local s = 0
+        for k, v in pairs(l) do
+            if k.name ~= nil then
+                s = s + 1
+            end
+        end
+        return s
+    end
+    l[createNode("imp01")] = 1
+    assert(1 == size())
+    
+    -- no reference remains to the annoymous node
+    collectgarbage()
+    assert(0 == size())
+    
+    -- Lua Book:
+    -- consider an entry (k,v) in an ephemeron table.
+    -- The reference to v is only strong if there is some other external 
+    -- reference to k. Otherwise, the collector will eventually collect 
+    -- k and remove the entry from the table, even if v refers 
+    -- (directly or indirectly) to k
+end
+
+
+local function demoTableWithWeakValues()
+    local function findChild(n, childName)
+        for _, childNode in pairs(n.childNodes) do
+            if childNode.name == childName then
+                return childNode
+            end
+        end
+        return nil
+    end
+    
+    local p = createCapturePackage()
+    local n = findChild(p, "gun01")
+    assert(n)
+    
+    -- equivalent to "del n" in Python
+    n = nil
+    collectgarbage()
+    local n = findChild(p, "gun01")
+    assert(n == nil)
+    
+    -- however because other nodes, imp01, clip and its child nodes 
+    -- do not have any named-references either, after the call to
+    -- collectgarbage() they will also be recycled!
+    assert(findChild(p, "imp01") == nil)
+end
+
+
+local function run()
+    demoSceneGraph()
+    demoTableWithWeakKeys()
+    demoTableWithWeakValues()
 end
 
 
