@@ -37,6 +37,8 @@ local function demoClosureWithUpvalues()
 end
 
 
+-- Lua Book P274 shows how to implement this object-like construct in C, 
+-- I think that example is a bit of an overkill.
 local function createObject()
     local state = {value=0}
     
