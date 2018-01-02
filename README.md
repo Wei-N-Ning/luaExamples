@@ -11,21 +11,19 @@ Coming from a C++ and Python background I tend to think (immaturally) that
 there exists solution in Lua for every problem I can solve nicely in the 
 former languages. 
 
-This is obviously not true, but toying with this idea  
-helps me to see the boundary of Lua as well as its fields of application. 
-Despite of the differences, here are still many patterns 
-that apply equally well in Lua, such as encapsulation, state & strategy.
-You can find some of these patterns here.
+This is obviously not true, but toying with this idea helps me to see 
+the boundary of Lua as well as its fields of application. 
+
+Despite of the differences between Lua other languages, here are still 
+many patterns that apply equally well in Lua, such as encapsulation, 
+state & strategy. You can find some of these patterns here.
 
 Some examples in this project are inspired by the book 
 [Programming in Lua, 4th edition](
 https://www.amazon.com/Programming-Lua-Fourth-Roberto-Ierusalimschy/dp/8590379868
 )
 
-Although the examples here are self-explanatory and do not require 
-additional learning materials, I would still highly 
-recommend this book to developers new to Lua programming 
-language. I have this habit of leaving page numbers or directly citing 
+I have this habit of leaving page numbers or directly citing 
 the contents of this book in the docstrings.
 
 ### Similar/Related Projects?
