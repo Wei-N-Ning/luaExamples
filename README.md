@@ -2,31 +2,34 @@
 Lua Programming Examples
 ========================
 
-### Purpose of this project?
+## Purpose of this project?
 
 As the title suggests these are the programming examples written in 
 Lua for (my) learning purpose. 
 
-Coming from a C++ and Python background I tend to think (immaturally) that 
-there exists solution in Lua for every problem I can solve nicely in the 
+Coming from a C++ and Python background I tend to think immaturally that 
+there exists a solution in Lua for every problem I can solve nicely in the 
 former languages. 
 
 This is obviously not true, but toying with this idea helps me to see 
-the boundary of Lua as well as its fields of application. 
+the boundary of Lua as well as its fields of application. I have documented 
+some of these in the examples. 
 
-Despite of the differences between Lua other languages, here are still 
+Despite of the differences between Lua other languages, there are still 
 many patterns that apply equally well in Lua, such as encapsulation, 
 state & strategy. You can find some of these patterns here.
 
-Some examples in this project are inspired by the book 
+Lots of examples in this project are inspired by the book 
 [Programming in Lua, 4th edition](
 https://www.amazon.com/Programming-Lua-Fourth-Roberto-Ierusalimschy/dp/8590379868
 )
 
-I have this habit of leaving page numbers or directly citing 
-the contents of this book in the docstrings.
+Being a big fan of this book I have a habit of leaving page 
+numbers or directly citing the contents of this book in the docstrings.
 
-### Similar/Related Projects?
+I'm hoping to keep this project updated as often as I can.
+
+## Similar/Related Projects?
 
 Definitely checkout the official [Lua project](https://github.com/lua/lua)
 
@@ -34,7 +37,20 @@ Definitely checkout the official [Lua project](https://github.com/lua/lua)
 
 still updating......
 
-### Category
+## TODOs
+
+Unit-testing patterns (using luaunit and using only the standard 
+libraries)
+
+Data structure: trie, ring buffer, RB-tree
+
+## Categories
+
+I have grouped these examples in the following sections under the heavy 
+influence of Python and C++. That means, these grouping may not make much 
+sense in the eyes of seasoned Lua programmers. 
+
+I'll refine them as I go.
 
 [helloWorld](src/helloWorld)
 
@@ -42,7 +58,7 @@ still updating......
 
 [strings](src/strings)
 
-How to manipulate strings. How use Lua's bulit-in regex-like pattern 
+How to manipulate strings. How to use Lua's bulit-in regex-like pattern 
 system.
 
 [variables](src/variables)
@@ -121,7 +137,7 @@ call shell commands;
 
 [iterators](src/iterators)
 
-losely based on Lua Book P158, iterator
+loosely based on Lua Book P158, iterator
 
 [multithreading](src/multithreading)
 
@@ -151,12 +167,14 @@ How to compile a Lua source file to byte code.
 
 How to handle exceptions (pcall).
 
-### And there is more......
+## And there is more......
 
 This project does not contain (nor is it intended to show) examples 
-of Lua-C interface. I'm simply trying to keep its "purity".
+of Lua-C interface. 
 
-I have added some examples that show Lua-C/C++ integration in 
+I want to keep its "purity".
+
+I have added some examples that demonstrate Lua-C/C++ integration in 
 [my own clone of the Lua project](https://github.com/powergun/lua/tree/wein)
 
 
